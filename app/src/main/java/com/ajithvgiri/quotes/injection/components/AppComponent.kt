@@ -25,4 +25,5 @@ interface AppComponent {
     fun inject(app: BaseActivity)
 
     fun inject(app: BaseFragment)
+
 }

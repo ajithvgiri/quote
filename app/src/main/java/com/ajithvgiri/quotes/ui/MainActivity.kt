@@ -6,11 +6,15 @@
  -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.ui
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.View
 import com.ajithvgiri.quotes.R
 import com.ajithvgiri.quotes.ui.base.BaseActivity
 import com.ajithvgiri.quotes.ui.quotes.QuotesFragment
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : BaseActivity() {
 
@@ -19,8 +23,19 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         commitFragment(QuotesFragment())
+
+        isInternetAvailable.observe(this,
+            Observer<Boolean> { connection ->
+                connection?.let {
+                    if (it) {
+                        textViewConnectivity.visibility = View.GONE
+                    } else {
+                        textViewConnectivity.visibility = View.VISIBLE
+                    }
+                }
+            })
+
     }
 
     private fun commitFragment(fragment: Fragment) {
@@ -29,4 +44,6 @@ class MainActivity : BaseActivity() {
             .add(R.id.frameLayout, fragment)
             .commit()
     }
+
+
 }

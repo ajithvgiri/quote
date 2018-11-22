@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
-        // Context of the app under test.
+        // Context of the application under test.
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.ajithvgiri.quotes", appContext.packageName)
     }

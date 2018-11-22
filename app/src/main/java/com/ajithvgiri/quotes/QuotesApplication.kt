@@ -1,9 +1,3 @@
-/*------------------------------------------------------------------------------
- -  Created by ajithvgiri on 22/11/18 10:51 PM
- -  Copyright (c) 2018 . All rights reserved.
- -  Last modified 22/11/18 4:20 PM
- -
- -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes
 
 import android.app.Activity
@@ -35,6 +29,5 @@ class QuotesApplication : Application(), HasActivityInjector, HasSupportFragment
     override fun activityInjector() = activityInjector
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
-
 
 }

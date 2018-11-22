@@ -6,6 +6,7 @@
  -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.data.repository
 
+import android.arch.lifecycle.LiveData
 import com.ajithvgiri.quotes.data.dao.QuoteDao
 import com.ajithvgiri.quotes.data.model.Quote
 import com.ajithvgiri.quotes.data.remote.ApiInterface
@@ -19,6 +20,8 @@ class QuoteRepository @Inject constructor(
 ) {
 
     private val TAG = QuoteRepository::class.java.simpleName
+    lateinit var connectionLiveData: LiveData<Boolean>
+
 
     fun getAllQuotes(): Observable<List<Quote>> {
         var observableFromApi: Observable<List<Quote>> = getQuotesFromAPI()

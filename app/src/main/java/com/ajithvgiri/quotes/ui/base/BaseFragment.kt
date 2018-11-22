@@ -17,8 +17,10 @@ open class BaseFragment : Fragment() {
     @Inject
     lateinit var quotesViewModelFactory: QuotesViewModelFactory
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidSupportInjection.inject(this)
+
     }
 }

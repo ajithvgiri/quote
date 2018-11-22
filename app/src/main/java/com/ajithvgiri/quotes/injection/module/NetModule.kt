@@ -41,5 +41,7 @@ class NetModule(private val baseUrl: String) {
     @Provides
     @Singleton
     fun providesApiInterface(retrofit: Retrofit): ApiInterface = retrofit.create(
-        ApiInterface::class.java)
+        ApiInterface::class.java
+    )
+
 }

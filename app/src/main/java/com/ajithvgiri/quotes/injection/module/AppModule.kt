@@ -11,39 +11,39 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.persistence.room.Room
 import com.ajithvgiri.quotes.data.Database
 import com.ajithvgiri.quotes.data.dao.QuoteDao
+import com.ajithvgiri.quotes.utils.AppUtils
 import com.ajithvgiri.quotes.utils.QuotesViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(val app: Application) {
+class AppModule(val application: Application) {
 
 
     @Provides
     @Singleton
-    fun provideApplication(): Application = app
+    fun provideApplication(): Application = application
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesDatabase(app: Application): Database = Room.databaseBuilder(
-        app,
-        Database::class.java, "quotes"
-    )
+    fun provideUtils(): AppUtils = AppUtils(application)
+
+
+    @Provides
+    @Singleton
+    fun provideQuotesDatabase(app: Application): Database = Room.databaseBuilder(app, Database::class.java, "quotes")
         /*.addMigrations(MIGRATION_1_2)*/
         .fallbackToDestructiveMigration()
         .build()
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesDao(
-        database: Database
-    ): QuoteDao = database.quotesDao()
-
+    fun provideQuotesDao(database: Database): QuoteDao = database.quotesDao()
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesViewModelFactory(
-        factory: QuotesViewModelFactory
-    ): ViewModelProvider.Factory = factory
+    fun provideQuotesViewModelFactory(factory: QuotesViewModelFactory): ViewModelProvider.Factory = factory
+
+
 }

@@ -48,6 +48,14 @@ class QuotesFragment : BaseFragment() {
                 }
                 swipeRefreshLayout.isRefreshing = false
             })
+
+//        isConnected.observe(this, Observer {
+//            if (it!!) {
+//                textViewQuotes.text = "Connected"
+//            } else {
+//                textViewQuotes.text = "No internet connection"
+//            }
+//        })
     }
 
     override fun onDetach() {
