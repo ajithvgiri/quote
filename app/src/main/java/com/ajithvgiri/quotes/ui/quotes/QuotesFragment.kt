@@ -16,20 +16,18 @@ import kotlinx.android.synthetic.main.fragment_quotes.*
 class QuotesFragment : BaseFragment() {
 
 
-    lateinit var quoteViewModel: QuoteViewModel
+    private lateinit var quoteViewModel: QuoteViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_quotes, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
+
+        quoteViewModel.loadQuotes()
         swipeRefreshLayout.setOnRefreshListener {
             quoteViewModel.getRandomQuotes()
         }
@@ -37,14 +35,16 @@ class QuotesFragment : BaseFragment() {
 
         quoteViewModel.randomQuote().observe(this,
             Observer {
+                textViewQuotes.text = it?.quote
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     textViewQuotes.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
                 }
                 swipeRefreshLayout.isRefreshing = false
             })
-        quoteViewModel.cryptocurrenciesError().observe(this, Observer<String> {
-            textViewQuotes.text = "error $it"
-        })
+
+//        quoteViewModel.quotesError().observe(this, Observer<String> {
+//            textViewQuotes.text = "$it"
+//        })
     }
 
 

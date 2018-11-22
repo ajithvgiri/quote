@@ -21,8 +21,8 @@ class QuoteRepository @Inject constructor(
 //            observableFromApi = getQuotesFromAPI()
 //        }
         val observableFromDb = getQuotesFromDatabase()
-        return observableFromDb
-//        return Observable.concatArrayEager(observableFromApi, observableFromDb)
+//        return observableFromDb
+        return Observable.concatArrayEager(observableFromApi, observableFromDb)
     }
 
     fun getQuotesFromAPI(): Observable<List<Quote>> {

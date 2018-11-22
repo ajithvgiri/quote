@@ -15,12 +15,12 @@ class QuotesActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 //        AndroidInjection.inject(this)
 //        quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
-//        quoteViewModel.loadCryptocurrencies()
+//        quoteViewModel.loadQuotes()
 //        quoteViewModel.quotesListResult().observe(this,
 //            Observer<List<Quote>> {
 //                textViewQuotes.text = "Hello ${it?.size} quotes"
 //            })
-//        quoteViewModel.cryptocurrenciesError().observe(this, Observer<String> {
+//        quoteViewModel.quotesError().observe(this, Observer<String> {
 //            textViewQuotes.text = "Hello error $it"
 //        })
 
@@ -36,7 +36,7 @@ class QuotesActivity : BaseActivity() {
 //                }
 //                swipeRefreshLayout.isRefreshing = false
 //            })
-//        quoteViewModel.cryptocurrenciesError().observe(this, Observer<String> {
+//        quoteViewModel.quotesError().observe(this, Observer<String> {
 //            textViewQuotes.text = "error $it"
 //        })
 

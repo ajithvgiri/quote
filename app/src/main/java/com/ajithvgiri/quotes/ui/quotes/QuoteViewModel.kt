@@ -19,7 +19,6 @@ class QuoteViewModel @Inject constructor(
     private val TAG = QuoteViewModel::class.java.simpleName
 
     var quoteList: MutableLiveData<List<Quote>> = MutableLiveData()
-    var quote: MutableLiveData<String> = MutableLiveData()
     var randomQuote: MutableLiveData<Quote> = MutableLiveData()
     var error: MutableLiveData<String> = MutableLiveData()
     lateinit var disposableObserver: DisposableObserver<List<Quote>>
@@ -34,19 +33,19 @@ class QuoteViewModel @Inject constructor(
     }
 
 
-    fun cryptocurrenciesError(): LiveData<String> {
+    fun quotesError(): LiveData<String> {
         return error
     }
 
-    fun loadCryptocurrencies() {
+    fun loadQuotes() {
 
         disposableObserver = object : DisposableObserver<List<Quote>>() {
             override fun onComplete() {
 
             }
 
-            override fun onNext(cryptocurrencies: List<Quote>) {
-                quoteList.postValue(cryptocurrencies)
+            override fun onNext(quotesList: List<Quote>) {
+                quoteList.postValue(quotesList)
             }
 
             override fun onError(e: Throwable) {
@@ -65,13 +64,10 @@ class QuoteViewModel @Inject constructor(
     fun getRandomQuotes() {
         quoteObserver = object : DisposableObserver<Quote>() {
             override fun onComplete() {
-
             }
 
             override fun onNext(t: Quote) {
                 randomQuote.postValue(t)
-                quote.postValue(t.quote)
-
             }
 
             override fun onError(e: Throwable) {
