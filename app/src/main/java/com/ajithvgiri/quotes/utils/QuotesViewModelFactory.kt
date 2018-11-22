@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:51 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 3:07 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.utils
 
 import android.arch.lifecycle.ViewModel
@@ -5,30 +11,6 @@ import android.arch.lifecycle.ViewModelProvider
 import javax.inject.Inject
 import javax.inject.Provider
 
-//class QuotesViewModelFactory @Inject constructor(private val quotesViewModel: QuotesViewModel) :
-//    ViewModelProvider.Factory {
-//
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(quotesViewModel::class.java)) {
-//            return quotesViewModel as T
-//        }
-//        throw IllegalArgumentException("Unknown class name")
-//    }
-//}
-
-//class QuotesViewModelFactory @Inject constructor(
-//    private val cryptocurrenciesViewModel: QuoteViewModel
-//) : ViewModelProvider.Factory {
-//
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(QuoteViewModel::class.java)) {
-//            return cryptocurrenciesViewModel as T
-//        }
-//        throw IllegalArgumentException("Unknown class name")
-//    }
-//}
-
-//@Suppress("UNCHECKED_CAST")
 class QuotesViewModelFactory @Inject constructor(private val viewModelsMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) :
     ViewModelProvider.Factory {
 

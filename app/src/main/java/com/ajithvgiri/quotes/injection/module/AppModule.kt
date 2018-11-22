@@ -1,10 +1,14 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:46 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 2:16 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.injection.module
 
 import android.app.Application
 import android.arch.lifecycle.ViewModelProvider
-import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Room
-import android.arch.persistence.room.migration.Migration
 import com.ajithvgiri.quotes.data.Database
 import com.ajithvgiri.quotes.data.dao.QuoteDao
 import com.ajithvgiri.quotes.utils.QuotesViewModelFactory
@@ -15,15 +19,6 @@ import javax.inject.Singleton
 @Module
 class AppModule(val app: Application) {
 
-
-    companion object {
-        val MIGRATION_1_2: Migration = object : Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                // Change the table name to the correct one
-                database.execSQL("ALTER TABLE quote RENAME TO quotes")
-            }
-        }
-    }
 
     @Provides
     @Singleton
@@ -44,8 +39,6 @@ class AppModule(val app: Application) {
     fun provideCryptocurrenciesDao(
         database: Database
     ): QuoteDao = database.quotesDao()
-
-
 
 
     @Provides

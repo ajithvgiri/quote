@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:47 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 12:36 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.injection.module
 
 import android.arch.lifecycle.ViewModel
@@ -12,5 +18,5 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(QuoteViewModel::class)
-    abstract fun bindMyViewModel(myViewModel: QuoteViewModel): ViewModel
+    abstract fun bindQuoteViewModel(myViewModel: QuoteViewModel): ViewModel
 }

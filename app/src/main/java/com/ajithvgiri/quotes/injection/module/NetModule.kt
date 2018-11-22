@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:46 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 21/11/18 11:02 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.injection.module
 
 import com.ajithvgiri.quotes.data.remote.ApiInterface

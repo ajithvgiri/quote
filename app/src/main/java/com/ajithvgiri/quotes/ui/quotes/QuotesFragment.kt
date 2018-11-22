@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:49 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 10:48 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.ui.quotes
 
 
@@ -27,7 +33,8 @@ class QuotesFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
 
-        quoteViewModel.loadQuotes()
+
+
         swipeRefreshLayout.setOnRefreshListener {
             quoteViewModel.getRandomQuotes()
         }
@@ -41,10 +48,11 @@ class QuotesFragment : BaseFragment() {
                 }
                 swipeRefreshLayout.isRefreshing = false
             })
+    }
 
-//        quoteViewModel.quotesError().observe(this, Observer<String> {
-//            textViewQuotes.text = "$it"
-//        })
+    override fun onDetach() {
+        super.onDetach()
+        quoteViewModel.disposableObserver
     }
 
 

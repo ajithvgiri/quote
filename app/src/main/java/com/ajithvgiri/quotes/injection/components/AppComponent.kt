@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:45 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 4:17 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.injection.components
 
 import com.ajithvgiri.quotes.QuotesApplication

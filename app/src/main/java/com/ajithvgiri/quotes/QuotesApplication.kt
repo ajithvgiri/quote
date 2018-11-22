@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:51 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 4:20 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes
 
 import android.app.Activity
@@ -22,7 +28,8 @@ class QuotesApplication : Application(), HasActivityInjector, HasSupportFragment
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().appModule(AppModule(this)).netModule(NetModule(BuildConfig.BASE_URL)).build().inject(this)
+        DaggerAppComponent.builder().appModule(AppModule(this)).netModule(NetModule(BuildConfig.BASE_URL)).build()
+            .inject(this)
     }
 
     override fun activityInjector() = activityInjector

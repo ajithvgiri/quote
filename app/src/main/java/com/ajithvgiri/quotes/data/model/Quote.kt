@@ -1,11 +1,15 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:44 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 21/11/18 1:08 AM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.data.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import com.squareup.moshi.Json
 import java.io.Serializable
-
-//data class Quote(val id: Int, val author: String, val quote: String)
 
 @Entity(
     tableName = "quotes"

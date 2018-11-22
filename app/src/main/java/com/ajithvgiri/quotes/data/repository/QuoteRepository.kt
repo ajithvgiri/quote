@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:45 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 5:48 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.data.repository
 
 import com.ajithvgiri.quotes.data.dao.QuoteDao
@@ -25,7 +31,7 @@ class QuoteRepository @Inject constructor(
         return Observable.concatArrayEager(observableFromApi, observableFromDb)
     }
 
-    fun getQuotesFromAPI(): Observable<List<Quote>> {
+    private fun getQuotesFromAPI(): Observable<List<Quote>> {
         return apiInterface.allQuotes
             .doOnNext {
                 //                appUtils.logD(TAG, "Quotes size from API ${it.size}")
@@ -35,7 +41,7 @@ class QuoteRepository @Inject constructor(
             }
     }
 
-    fun getQuotesFromDatabase(): Observable<List<Quote>> {
+    private fun getQuotesFromDatabase(): Observable<List<Quote>> {
         return quoteDao.queryQuotes().toObservable()
     }
 

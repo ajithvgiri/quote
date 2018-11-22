@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:44 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 21/11/18 7:19 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.data.remote
 
 import com.ajithvgiri.quotes.data.model.Quote

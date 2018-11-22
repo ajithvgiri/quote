@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:48 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 4:39 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.ui.base
 
 import android.os.Bundle

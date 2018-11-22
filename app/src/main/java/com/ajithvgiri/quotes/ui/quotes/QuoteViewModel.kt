@@ -1,3 +1,9 @@
+/*------------------------------------------------------------------------------
+ -  Created by ajithvgiri on 22/11/18 10:50 PM
+ -  Copyright (c) 2018 . All rights reserved.
+ -  Last modified 22/11/18 10:31 PM
+ -
+ -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.ui.quotes
 
 import android.arch.lifecycle.LiveData
@@ -23,6 +29,10 @@ class QuoteViewModel @Inject constructor(
     var error: MutableLiveData<String> = MutableLiveData()
     lateinit var disposableObserver: DisposableObserver<List<Quote>>
     lateinit var quoteObserver: DisposableObserver<Quote>
+
+    init {
+        loadQuotes()
+    }
 
     fun quotesListResult(): LiveData<List<Quote>> {
         return quoteList
