@@ -1,10 +1,10 @@
 package com.ajithvgiri.quotes
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions.swipeDown
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.swipeDown
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.rule.ActivityTestRule
+import androidx.test.runner.AndroidJUnit4
 import com.ajithvgiri.quotes.ui.MainActivity
 import org.junit.Rule
 import org.junit.Test

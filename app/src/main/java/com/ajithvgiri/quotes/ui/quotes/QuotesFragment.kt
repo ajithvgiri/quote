@@ -7,8 +7,8 @@
 package com.ajithvgiri.quotes.ui.quotes
 
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
 import android.text.Layout

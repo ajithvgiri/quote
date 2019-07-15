@@ -6,7 +6,7 @@
  -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.injection.module
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.ajithvgiri.quotes.ui.quotes.QuoteViewModel
 import com.ajithvgiri.quotes.utils.ViewModelKey
 import dagger.Binds

@@ -7,8 +7,8 @@
 package com.ajithvgiri.quotes.injection.module
 
 import android.app.Application
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.persistence.room.Room
+import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import com.ajithvgiri.quotes.data.Database
 import com.ajithvgiri.quotes.data.dao.QuoteDao
 import com.ajithvgiri.quotes.utils.AppUtils

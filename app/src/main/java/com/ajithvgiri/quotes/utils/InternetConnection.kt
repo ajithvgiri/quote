@@ -1,6 +1,6 @@
 package com.ajithvgiri.quotes.utils
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE
@@ -14,7 +14,7 @@ import android.net.NetworkCapabilities.TRANSPORT_WIFI
 import android.net.NetworkInfo
 import android.net.NetworkRequest
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 
 
 class InternetConnection(private val context: Context) : MutableLiveData<Boolean>() {

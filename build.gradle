@@ -30,7 +30,7 @@ ext{
     archLifecycleVersion = '1.1.1'
     moshiConverterVersion = '2.3.0'
     moshiKotlinVersion = '1.5.0'
-    dagger2Version = '2.19'
+    dagger2Version = '2.22.1'
     rxJava2Version = '2.2.3'
     rxAndroidVersion = '2.1.0'
 

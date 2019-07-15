@@ -6,15 +6,11 @@
  -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.ui
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.View
+import androidx.fragment.app.Fragment
 import com.ajithvgiri.quotes.R
 import com.ajithvgiri.quotes.ui.base.BaseActivity
 import com.ajithvgiri.quotes.ui.quotes.QuotesFragment
-import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : BaseActivity() {
 

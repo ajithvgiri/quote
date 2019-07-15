@@ -6,11 +6,11 @@
  -----------------------------------------------------------------------------*/
 package com.ajithvgiri.quotes.ui.base
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ajithvgiri.quotes.utils.InternetConnection
 import dagger.android.AndroidInjection
 

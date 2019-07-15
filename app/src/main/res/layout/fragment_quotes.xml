@@ -5,7 +5,7 @@
         tools:context=".ui.quotes.QuotesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/swipeRefreshLayout">
@@ -27,5 +27,5 @@
             />
         </ScrollView>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

@@ -2,7 +2,7 @@ package com.ajithvgiri.quotes
 
 import android.app.Activity
 import android.app.Application
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.ajithvgiri.quotes.injection.components.DaggerAppComponent
 import com.ajithvgiri.quotes.injection.module.AppModule
 import com.ajithvgiri.quotes.injection.module.NetModule
