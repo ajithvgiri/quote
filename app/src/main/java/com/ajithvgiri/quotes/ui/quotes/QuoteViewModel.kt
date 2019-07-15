@@ -15,47 +15,39 @@ import com.ajithvgiri.quotes.data.repository.QuoteRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.anko.doAsync
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import javax.inject.Inject
 
-class QuoteViewModel @Inject constructor(
-    private val quoteRepository: QuoteRepository
-) : ViewModel() {
+class QuoteViewModel @Inject constructor(private val quoteRepository: QuoteRepository) : ViewModel() {
 
     private val TAG = QuoteViewModel::class.java.simpleName
 
-    var quoteList: MutableLiveData<List<Quote>> = MutableLiveData()
-    var randomQuote: MutableLiveData<Quote> = MutableLiveData()
+    private var randomQuote: MutableLiveData<Quote> = MutableLiveData()
     var error: MutableLiveData<String> = MutableLiveData()
     lateinit var disposableObserver: DisposableObserver<List<Quote>>
-    lateinit var quoteObserver: DisposableObserver<Quote>
 
     init {
         loadQuotes()
     }
 
-    fun quotesListResult(): LiveData<List<Quote>> {
-        return quoteList
-    }
 
     fun randomQuote(): LiveData<Quote> {
         return randomQuote
     }
 
 
-    fun quotesError(): LiveData<String> {
-        return error
-    }
-
-    fun loadQuotes() {
-
+    private fun loadQuotes() {
         disposableObserver = object : DisposableObserver<List<Quote>>() {
             override fun onComplete() {
-
+                if (!disposableObserver.isDisposed) disposableObserver.dispose()
+                getRandomQuotesFromStorage()
             }
 
             override fun onNext(quotesList: List<Quote>) {
-                quoteList.postValue(quotesList)
+                doAsync {
+                    quoteRepository.insertQuotes(quotesList)
+                }
             }
 
             override fun onError(e: Throwable) {
@@ -64,34 +56,20 @@ class QuoteViewModel @Inject constructor(
             }
         }
 
-        quoteRepository.getAllQuotes()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .debounce(400, MILLISECONDS)
-            .subscribe(disposableObserver)
+        doAsync {
+            quoteRepository.getAllQuotes()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .debounce(400, MILLISECONDS)
+                .subscribe(disposableObserver)
+        }
     }
 
-    fun getRandomQuotes() {
-        quoteObserver = object : DisposableObserver<Quote>() {
-            override fun onComplete() {
-                if (!disposableObserver.isDisposed) disposableObserver.dispose()
-            }
 
-            override fun onNext(t: Quote) {
-                randomQuote.postValue(t)
-            }
-
-            override fun onError(e: Throwable) {
-                error.postValue(e.message)
-            }
-
+    fun getRandomQuotesFromStorage() {
+        doAsync {
+            randomQuote.postValue(quoteRepository.getRandomQuotes())
         }
-
-        quoteRepository.getRandomQuotes()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .debounce(400, MILLISECONDS)
-            .subscribe(quoteObserver)
     }
 
 }

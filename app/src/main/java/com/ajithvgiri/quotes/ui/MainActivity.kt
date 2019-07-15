@@ -25,16 +25,16 @@ class MainActivity : BaseActivity() {
 
         commitFragment(QuotesFragment())
 
-        isInternetAvailable.observe(this,
-            Observer<Boolean> { connection ->
-                connection?.let {
-                    if (it) {
-                        textViewConnectivity.visibility = View.GONE
-                    } else {
-                        textViewConnectivity.visibility = View.VISIBLE
-                    }
-                }
-            })
+//        isInternetAvailable.observe(this,
+//            Observer<Boolean> { connection ->
+//                connection?.let {
+//                    if (it) {
+//                        textViewConnectivity.visibility = View.GONE
+//                    } else {
+//                        textViewConnectivity.visibility = View.VISIBLE
+//                    }
+//                }
+//            })
 
     }
 

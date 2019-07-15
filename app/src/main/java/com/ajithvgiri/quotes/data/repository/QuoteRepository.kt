@@ -14,32 +14,20 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 
-class QuoteRepository @Inject constructor(
-    private val apiInterface: ApiInterface,
-    private val quoteDao: QuoteDao
-) {
-
-    private val TAG = QuoteRepository::class.java.simpleName
-    lateinit var connectionLiveData: LiveData<Boolean>
-
+class QuoteRepository @Inject constructor(private val apiInterface: ApiInterface, private val quoteDao: QuoteDao) {
 
     fun getAllQuotes(): Observable<List<Quote>> {
-        var observableFromApi: Observable<List<Quote>> = getQuotesFromAPI()
-
-//        if (appUtils.isConnectedToInternet()) {
-//            observableFromApi = getQuotesFromAPI()
-//        }
+        val observableFromApi: Observable<List<Quote>> = getQuotesFromAPI()
         val observableFromDb = getQuotesFromDatabase()
-//        return observableFromDb
         return Observable.concatArrayEager(observableFromApi, observableFromDb)
     }
 
     private fun getQuotesFromAPI(): Observable<List<Quote>> {
         return apiInterface.allQuotes
             .doOnNext {
-                //                appUtils.logD(TAG, "Quotes size from API ${it.size}")
+                //appUtils.logD(TAG, "Quotes size from API ${it.size}")
                 for (item in it) {
-                    quoteDao.insertQuote(item)
+                    insertQuote(item)
                 }
             }
     }
@@ -48,17 +36,17 @@ class QuoteRepository @Inject constructor(
         return quoteDao.queryQuotes().toObservable()
     }
 
-    fun getRandomQuotes(): Observable<Quote> {
-//        return apiInterface.randomQuote.doOnNext {
-//            quoteDao.insertQuote(it)
-//        }
-        return quoteDao.queryRandomQuote().toObservable()
+    fun getRandomQuotes(): Quote {
+        return quoteDao.queryRandomQuote()
     }
 
-    fun insertQuotes(quote: Quote) {
+    private fun insertQuote(quote: Quote) {
         quoteDao.insertQuote(quote)
     }
 
+    fun insertQuotes(quotes: List<Quote>){
+        quoteDao.insertQuotes(quotes)
+    }
 
 }
 

@@ -19,12 +19,13 @@ interface QuoteDao {
     @Query("SELECT * FROM quotes")
     fun queryQuotes(): Single<List<Quote>>
 
-    @Insert(
-        onConflict = OnConflictStrategy.REPLACE
-    )
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertQuote(quote: Quote)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertQuotes(quotes: List<Quote>)
+
     @Query("SELECT * from quotes ORDER by random() Limit 1")
-    fun queryRandomQuote(): Single<Quote>
+    fun queryRandomQuote(): Quote
 
 }

@@ -31,17 +31,14 @@ class QuotesFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
 
-
-
         swipeRefreshLayout.setOnRefreshListener {
-            quoteViewModel.getRandomQuotes()
+            quoteViewModel.getRandomQuotesFromStorage()
         }
-        quoteViewModel.getRandomQuotes()
 
-        quoteViewModel.randomQuote().observe(this,
-            Observer {
+        quoteViewModel.randomQuote().observe(this, Observer {
                 textViewQuotes.text = it?.quote
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     textViewQuotes.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
@@ -56,11 +53,6 @@ class QuotesFragment : BaseFragment() {
 //                textViewQuotes.text = "No internet connection"
 //            }
 //        })
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        quoteViewModel.disposableObserver
     }
 
 

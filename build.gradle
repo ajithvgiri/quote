@@ -41,6 +41,9 @@ ext{
     //testImpl
     testRunnerVersion = '1.0.1'
     testEspressoVersion = '3.0.1'
+
+    //anko
+    anko_version='0.10.8'
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

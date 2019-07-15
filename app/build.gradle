@@ -87,4 +87,7 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.testEspressoVersion}"
     testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoVersion}"
 
+    // Anko Commons
+    implementation "org.jetbrains.anko:anko-commons:${rootProject.ext.anko_version}"
+
 }

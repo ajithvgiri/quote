@@ -14,7 +14,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <TextView
-                    android:layout_gravity="start"
+                    android:layout_gravity="start|center"
                     android:padding="16dp"
                     android:textAlignment="textStart"
                     android:id="@+id/textViewQuotes"

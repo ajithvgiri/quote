@@ -1,6 +1,6 @@
 package com.ajithvgiri.quotes.utils
 
-import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE
@@ -17,7 +17,7 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 
 
-class InternetConnection(private val context: Context) : LiveData<Boolean>() {
+class InternetConnection(private val context: Context) : MutableLiveData<Boolean>() {
     var intentFilter = IntentFilter(CONNECTIVITY_ACTION)
     private var connectivityManager = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
     private lateinit var networkCallback: NetworkCallback
