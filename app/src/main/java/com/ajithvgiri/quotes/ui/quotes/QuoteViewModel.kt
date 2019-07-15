@@ -74,6 +74,7 @@ class QuoteViewModel @Inject constructor(
     fun getRandomQuotes() {
         quoteObserver = object : DisposableObserver<Quote>() {
             override fun onComplete() {
+                if (!disposableObserver.isDisposed) disposableObserver.dispose()
             }
 
             override fun onNext(t: Quote) {
@@ -91,10 +92,6 @@ class QuoteViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .debounce(400, MILLISECONDS)
             .subscribe(quoteObserver)
-    }
-
-    fun disposeElements() {
-        if (disposableObserver != null && !disposableObserver.isDisposed) disposableObserver.dispose()
     }
 
 }
