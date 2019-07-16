@@ -7,53 +7,31 @@
 package com.ajithvgiri.quotes.ui.quotes
 
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import android.os.Build
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import com.ajithvgiri.quotes.R
+import com.ajithvgiri.quotes.databinding.FragmentQuotesBinding
 import com.ajithvgiri.quotes.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_quotes.*
 
 class QuotesFragment : BaseFragment() {
 
-
     private lateinit var quoteViewModel: QuoteViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quotes, container, false)
+        //return inflater.inflate(R.layout.fragment_quotes, container, false)
+        val quoteDataBinding = DataBindingUtil.inflate<FragmentQuotesBinding>(inflater, R.layout.fragment_quotes, container, false)
+        quoteDataBinding.lifecycleOwner = this
+        quoteDataBinding.quote = quoteViewModel
+        return quoteDataBinding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        quoteViewModel = ViewModelProviders.of(this, quotesViewModelFactory).get(QuoteViewModel::class.java)
-
-        swipeRefreshLayout.setOnRefreshListener {
-            quoteViewModel.getRandomQuotesFromStorage()
-        }
-
-        quoteViewModel.randomQuote().observe(this, Observer {
-                textViewQuotes.text = it?.quote
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    textViewQuotes.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-                }
-                swipeRefreshLayout.isRefreshing = false
-            })
-
-//        isConnected.observe(this, Observer {
-//            if (it!!) {
-//                textViewQuotes.text = "Connected"
-//            } else {
-//                textViewQuotes.text = "No internet connection"
-//            }
-//        })
-    }
-
-
 }
